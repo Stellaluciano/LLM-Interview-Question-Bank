@@ -1,0 +1,50 @@
+name: Sync README from Question Bank
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  sync:
+    if: ${{ !contains(github.event.head_commit.message, '[skip sync]') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate README.md from QUESTION_BANK.md
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          intro = """# LLM Interview Question Bank
+
+An original, community-driven repository of interview questions for modern LLM engineering.
+It is designed for realistic hiring loops and technical screen preparation.
+The source of truth is `QUESTION_BANK.md`, while `README.md` is generated for discoverability.
+Questions emphasize tradeoffs, debugging strategy, production constraints, and safety thinking.
+Contributors are expected to add fully original content using the required strict template.
+Automated checks in CI enforce formatting consistency and structural correctness.
+
+"""
+          bank = Path("QUESTION_BANK.md").read_text(encoding="utf-8")
+          Path("README.md").write_text(intro + bank, encoding="utf-8")
+          PY
+
+      - name: Commit synced README
+        if: github.event_name == 'push'
+        run: |
+          if ! git diff --quiet README.md; then
+            git config user.name "question-bank-bot"
+            git config user.email "question-bank-bot@users.noreply.github.com"
+            git add README.md
+            git commit -m "chore: sync README from question bank [skip sync]"
+            git push
+          fi
