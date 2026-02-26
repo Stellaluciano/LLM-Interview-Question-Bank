@@ -6,7 +6,7 @@ An original, community-driven collection of interview questions focused on pract
 - [Foundations of LLMs](#foundations-of-llms)
 - [Training & Alignment](#training-alignment)
 - [Inference & Systems Engineering](#inference-systems-engineering)
-- [Retrieval, Agents & Tool Use](#retrieval,-agents-tool-use)
+- [Retrieval, Agents & Tool Use](#retrieval-agents--tool-use)
 - [Evaluation & Safety](#evaluation-safety)
 - [Real-World Engineering & Debugging](#real-world-engineering-debugging)
 - [System Design Scenarios](#system-design-scenarios)

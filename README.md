@@ -7,15 +7,13 @@ Questions emphasize tradeoffs, debugging strategy, production constraints, and s
 Contributors are expected to add fully original content using the required strict template.
 Automated checks in CI enforce formatting consistency and structural correctness.
 
-# LLM Interview Question Bank
-
 An original, community-driven collection of interview questions focused on practical Large Language Model engineering.
 
 ## Table of Contents
 - [Foundations of LLMs](#foundations-of-llms)
 - [Training & Alignment](#training-alignment)
 - [Inference & Systems Engineering](#inference-systems-engineering)
-- [Retrieval, Agents & Tool Use](#retrieval,-agents-tool-use)
+- [Retrieval, Agents & Tool Use](#retrieval-agents--tool-use)
 - [Evaluation & Safety](#evaluation-safety)
 - [Real-World Engineering & Debugging](#real-world-engineering-debugging)
 - [System Design Scenarios](#system-design-scenarios)

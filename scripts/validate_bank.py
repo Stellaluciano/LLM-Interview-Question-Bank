@@ -9,6 +9,16 @@ from pathlib import Path
 BANK_PATH = Path("QUESTION_BANK.md")
 ALLOWED_DIFFICULTY = {"Easy", "Medium", "Hard"}
 QUESTION_HEADER = re.compile(r"^### Q: .+")
+REQUIRED_SECTIONS = [
+    "Foundations of LLMs",
+    "Training & Alignment",
+    "Inference & Systems Engineering",
+    "Retrieval, Agents & Tool Use",
+    "Evaluation & Safety",
+    "Real-World Engineering & Debugging",
+    "System Design Scenarios",
+]
+
 FIELD_PATTERNS = {
     "difficulty": re.compile(r"^\*\*Difficulty:\*\*\s*(Easy|Medium|Hard)\s{2}$"),
     "tags": re.compile(r"^\*\*Tags:\*\*\s*(.+?)\s{2}$"),
@@ -74,11 +84,21 @@ def main() -> None:
     if not lines or lines[0] != "# LLM Interview Question Bank":
         fail("QUESTION_BANK.md must start with '# LLM Interview Question Bank'.")
 
+    # ensure required top-level sections exist
+    for section in REQUIRED_SECTIONS:
+        if f"## {section}" not in lines:
+            fail(f"Missing required section: {section}")
+
     question_count = 0
+    seen_titles: set[str] = set()
     i = 0
     while i < len(lines):
         if QUESTION_HEADER.match(lines[i]):
             question_count += 1
+            title = lines[i][7:].strip().lower()
+            if title in seen_titles:
+                fail(f"Duplicate question title detected at line {i+1}: {lines[i][7:].strip()}")
+            seen_titles.add(title)
             i = validate_question_block(lines, i)
         i += 1
 

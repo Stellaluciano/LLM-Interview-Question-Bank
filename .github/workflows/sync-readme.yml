@@ -7,7 +7,7 @@ on:
 
 jobs:
   sync:
-    if: ${{ !contains(github.event.head_commit.message, '[skip sync]') }}
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip sync]') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,22 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: Generate README.md from QUESTION_BANK.md
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          intro = """# LLM Interview Question Bank
-
-An original, community-driven repository of interview questions for modern LLM engineering.
-It is designed for realistic hiring loops and technical screen preparation.
-The source of truth is `QUESTION_BANK.md`, while `README.md` is generated for discoverability.
-Questions emphasize tradeoffs, debugging strategy, production constraints, and safety thinking.
-Contributors are expected to add fully original content using the required strict template.
-Automated checks in CI enforce formatting consistency and structural correctness.
-
-"""
-          bank = Path("QUESTION_BANK.md").read_text(encoding="utf-8")
-          Path("README.md").write_text(intro + bank, encoding="utf-8")
-          PY
+        run: python scripts/sync_readme.py
 
       - name: Commit synced README
         if: github.event_name == 'push'
