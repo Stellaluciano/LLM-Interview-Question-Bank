@@ -57,6 +57,9 @@ def validate_question_block(lines: list[str], start: int) -> int:
                 fail(f"Line {i+1}: Tags must be non-empty comma-separated values.")
         i += 1
 
+    if i < len(lines) and lines[i] == "":
+        i += 1
+
     for bullet_idx in range(3):
         if i >= len(lines) or not lines[i].startswith("- "):
             fail(f"Line {i+1}: Missing bullet {bullet_idx+1} under strong answer section.")
@@ -65,6 +68,9 @@ def validate_question_block(lines: list[str], start: int) -> int:
     if i >= len(lines) or not FIELD_PATTERNS["pitfalls"].match(lines[i]):
         fail(f"Line {i+1}: Missing 'Common pitfalls' section.")
     i += 1
+
+    if i < len(lines) and lines[i] == "":
+        i += 1
 
     for bullet_idx in range(2):
         if i >= len(lines) or not lines[i].startswith("- "):
