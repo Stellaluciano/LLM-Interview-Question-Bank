@@ -30,13 +30,17 @@ Thank you for helping improve this interview question bank. Keep contributions o
 ## Local validation before opening a PR
 
 1. Run structure validation:
+
    ```bash
    python scripts/validate_bank.py
    ```
+
 2. Run markdown linting (if available locally):
+
    ```bash
    markdownlint "**/*.md"
    ```
+
 3. Confirm that `README.md` content is in sync with `QUESTION_BANK.md` and introduction text.
 
 ## Pull request checklist (required)

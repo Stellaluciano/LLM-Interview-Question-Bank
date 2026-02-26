@@ -3,12 +3,13 @@
 An original, community-driven collection of interview questions focused on practical Large Language Model engineering.
 
 ## Table of Contents
+
 - [Foundations of LLMs](#foundations-of-llms)
-- [Training & Alignment](#training-alignment)
-- [Inference & Systems Engineering](#inference-systems-engineering)
+- [Training & Alignment](#training--alignment)
+- [Inference & Systems Engineering](#inference--systems-engineering)
 - [Retrieval, Agents & Tool Use](#retrieval-agents--tool-use)
-- [Evaluation & Safety](#evaluation-safety)
-- [Real-World Engineering & Debugging](#real-world-engineering-debugging)
+- [Evaluation & Safety](#evaluation--safety)
+- [Real-World Engineering & Debugging](#real-world-engineering--debugging)
 - [System Design Scenarios](#system-design-scenarios)
 
 ## Foundations of LLMs
