@@ -1,12 +1,5 @@
 # LLM Interview Question Bank
 
-An original, community-driven repository of interview questions for modern LLM engineering.
-It is designed for realistic hiring loops and technical screen preparation.
-The source of truth is `QUESTION_BANK.md`, while `README.md` is generated for discoverability.
-Questions emphasize tradeoffs, debugging strategy, production constraints, and safety thinking.
-Contributors are expected to add fully original content using the required strict template.
-Automated checks in CI enforce formatting consistency and structural correctness.
-
 An original, community-driven collection of interview questions focused on practical Large Language Model engineering.
 
 ## Table of Contents

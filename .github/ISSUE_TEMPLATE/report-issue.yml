@@ -1,0 +1,34 @@
+name: Report a repository issue
+description: Report formatting, sync, validation, or quality issues.
+title: "[Issue]: "
+labels: ["issue"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - QUESTION_BANK formatting
+        - README sync workflow
+        - Validation script
+        - CI workflow
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: Describe what happened and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: false
